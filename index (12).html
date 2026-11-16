@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101827">
+    <title>PoolPlay</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<section id="authScreen" class="auth-screen">
+    <div class="auth-card">
+
+        <div class="auth-brand">
+            <div class="brand-mark">P</div>
+            <h1>PoolPlay</h1>
+            <p>Watch • Enter • Participate</p>
+        </div>
+
+        <div id="loginPanel">
+            <h2>Welcome back</h2>
+            <p>Sign in to your PoolPlay account.</p>
+
+            <form id="loginForm">
+                <label for="loginUsername">Username</label>
+                <input
+                    id="loginUsername"
+                    type="text"
+                    minlength="3"
+                    maxlength="20"
+                    autocomplete="username"
+                    required
+                    placeholder="Enter your username"
+                >
+
+                <label for="loginPassword">Password</label>
+                <input
+                    id="loginPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    placeholder="Enter your password"
+                >
+
+                <button type="submit" class="pool-button">
+                    Log In
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <button type="button" id="showRegisterBtn">
+                    Register
+                </button>
+            </p>
+        </div>
+
+        <div id="registerPanel" hidden>
+            <h2>Create account</h2>
+            <p>Join the PoolPlay community.</p>
+
+            <form id="registerForm">
+                <label for="registerUsername">Username</label>
+                <input
+                    id="registerUsername"
+                    type="text"
+                    minlength="3"
+                    maxlength="20"
+                    pattern="[A-Za-z0-9_]{3,20}"
+                    autocomplete="username"
+                    required
+                    placeholder="Choose a username"
+                >
+
+                <small>3–20 characters. Letters, numbers and underscores only.</small>
+
+                <label for="registerEmail">Email address</label>
+                <input
+                    id="registerEmail"
+                    type="email"
+                    autocomplete="email"
+                    required
+                    placeholder="Enter your email"
+                >
+
+                <label for="registerPassword">Password</label>
+                <input
+                    id="registerPassword"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                    placeholder="Create a password"
+                >
+
+                <label for="confirmPassword">Confirm password</label>
+                <input
+                    id="confirmPassword"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                    placeholder="Enter password again"
+                >
+
+                <button type="submit" class="pool-button">
+                    Create Account
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <button type="button" id="showLoginBtn">
+                    Log In
+                </button>
+            </p>
+        </div>
+
+        <p id="authMessage" class="auth-message"
+           role="status" aria-live="polite"></p>
+
+        <p class="auth-demo-note">
+            PoolPlay is currently a demonstration application.
+            No real-money prizes or withdrawals are available.
+        </p>
+
+    </div>
+</section>
+
+    
+    <header class="topbar">
+    <button
+        class="icon-button menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+    >☰</button><div class="brand">
+    <div class="brand-mark">P</div>
+    <div>
+        <h1>PoolPlay</h1>
+        <p>Watch • Enter • Participate</p>
+    </div>
+</div>
+
+<button
+    class="icon-button"
+    id="resetDemoBtn"
+    aria-label="Reset demo"
+    title="Reset demo"
+>↻</button>
+
+</header><div id="menuBackdrop" class="menu-backdrop"></div><aside id="sideMenu" class="side-menu">
+    <div class="menu-heading">
+        <div class="brand-mark">P</div>
+        <div>
+            <h2>PoolPlay</h2>
+            <p>Navigation</p>
+        </div>
+        <button
+            id="menuClose"
+            class="menu-close"
+            aria-label="Close menu"
+        >✕</button>
+    </div><nav class="menu-links">
+    <button class="menu-link active" data-screen="dashboardScreen">
+        <span>⌂</span> Dashboard
+    </button>
+
+    <button class="menu-link" data-screen="walletScreen">
+        <span>◈</span> My Wallet
+    </button>
+
+    <button class="menu-link" data-screen="winnersScreen">
+        <span>🏆</span> Pool Winners
+    </button>
+
+    <button class="menu-link" data-screen="entriesScreen">
+        <span>▤</span> My Entries
+    </button>
+
+    <button class="menu-link" data-screen="notificationsScreen">
+        <span>♧</span> Notifications
+    </button>
+
+    <button class="menu-link" data-screen="settingsScreen">
+        <span>⚙</span> Settings
+    </button>
+</nav>
+
+<div class="menu-footer">
+    <span class="demo-badge">DEMO ONLY</span>
+    <p>PoolPlay prototype</p>
+</div>
+
+</aside><main class="page"><!-- DASHBOARD -->
+<section class="app-screen active" id="dashboardScreen">
+
+    <section class="wallet-card">
+        <div class="wallet-heading">
+            <div>
+                <p class="eyebrow">YOUR DASHBOARD</p>
+                <h2>Your activity</h2>
+            </div>
+            <span class="demo-badge">DEMO ONLY</span>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat">
+                <span class="stat-icon">◈</span>
+                <span class="stat-label">Demo balance</span>
+                <strong id="balance">₦0.00</strong>
+                <small>Not real money</small>
+            </div>
+
+            <div class="stat">
+                <span class="stat-icon">▦</span>
+                <span class="stat-label">Daily entries</span>
+                <strong>
+                    <span id="dailyEntries">0</span>
+                    <span class="stat-muted"> / 20</span>
+                </strong>
+                <small>Normal pools entered today</small>
+            </div>
+        </div>
+
+        <div class="progress-wrap">
+            <div class="progress-copy">
+                <span>Special pool access</span>
+                <strong id="progressText">0 / 10 normal pools</strong>
+            </div>
+
+            <div class="progress-track">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <p id="unlockMessage" class="progress-note">
+                Enter 10 different normal pools to unlock special pools.
+            </p>
+        </div>
+    </section>
+
+    <section class="notice">
+        <span class="notice-icon">ⓘ</span>
+        <p>
+            <strong>Prototype:</strong>
+            Advertisements, cash prizes, winner selection and withdrawals
+            are not connected. Pool amounts are demonstration points only.
+        </p>
+    </section>
+
+    <section class="section-heading">
+        <div>
+            <p class="eyebrow">CHOOSE YOUR POOL</p>
+            <h2>Normal pools <span class="count-pill">20</span></h2>
+        </div>
+        <span class="section-caption">One entry per pool each day</span>
+    </section>
+
+    <div id="normalPools" class="pool-grid"></div>
+
+    <section class="section-heading special-heading">
+        <div>
+            <p class="eyebrow">EXTRA ACCESS</p>
+            <h2>Special pools <span class="count-pill special-count">10</span></h2>
+        </div>
+        <span class="section-caption">Unlock after 10 different normal pools</span>
+    </section>
+
+    <div id="specialPools" class="pool-grid"></div>
+
+    <footer>
+        <p>
+            PoolPlay concept preview. Demo entries are saved in this
+            browser on this device.
+        </p>
+        <p>
+            Before launching, confirm that the business model complies
+            with Google Play and your advertising provider's policies.
+        </p>
+    </footer>
+</section>
+
+<!-- WALLET -->
+<section class="app-screen" id="walletScreen">
+    <section class="wallet-card">
+        <p class="eyebrow">MY WALLET</p>
+        <h2>Wallet overview</h2>
+        <p class="section-caption">
+            This is a demonstration wallet. No real funds are held.
+        </p>
+
+        <div class="wallet-demo-balance">
+            <span>Available demo balance</span>
+            <strong id="walletBalance">₦0.00</strong>
+            <small>Not withdrawable</small>
+        </div>
+    </section>
+
+    <section class="notice">
+        <span class="notice-icon">ⓘ</span>
+        <p>
+            Real deposits, payment details and cash withdrawals
+            are not available in this prototype.
+        </p>
+    </section>
+
+    <section class="wallet-card">
+        <h2>Withdrawal request</h2>
+        <p>
+            Test how a withdrawal request form will look.
+            Submitting it will not send money or contact an administrator.
+        </p>
+
+        <form id="withdrawalForm">
+            <label for="withdrawalAmount">Requested amount (demo)</label>
+            <input
+                type="number"
+                id="withdrawalAmount"
+                min="1"
+                step="1"
+                placeholder="Enter a demo amount"
+                required
+            >
+            <button type="submit" class="pool-button">
+                Submit demo request
+            </button>
+        </form>
+
+        <div id="withdrawalResult" class="screen-message">
+            No demo withdrawal requests submitted.
+        </div>
+    </section>
+
+    <section class="wallet-card">
+        <h2>Wallet activity</h2>
+        <div id="walletHistory" class="history-list">
+            No wallet activity yet.
+        </div>
+    </section>
+</section>
+
+<!-- WINNERS -->
+<section class="app-screen" id="winnersScreen">
+    <section class="wallet-card">
+        <p class="eyebrow">RESULTS</p>
+        <h2>Pool Winners 🏆</h2>
+        <p>
+            Completed pool results will appear here when a
+            winner-selection system is added.
+        </p>
+        <div id="winnersList" class="history-list">
+            <div class="empty-state">
+                <span>🏆</span>
+                <h3>No winners yet</h3>
+                <p>This prototype has not selected or paid any winners.</p>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- ENTRIES -->
+<section class="app-screen" id="entriesScreen">
+    <section class="wallet-card">
+        <p class="eyebrow">YOUR ACTIVITY</p>
+        <h2>My Entries</h2>
+        <p>View the normal and special pools you have entered.</p>
+        <div id="myEntriesList" class="history-list">
+            No entries yet.
+        </div>
+    </section>
+</section>
+
+<!-- NOTIFICATIONS -->
+<section class="app-screen" id="notificationsScreen">
+    <section class="wallet-card">
+        <p class="eyebrow">UPDATES</p>
+        <h2>Notifications</h2>
+        <div class="empty-state">
+            <span>🔔</span>
+            <h3>No notifications</h3>
+            <p>
+                Pool updates and announcements can appear here
+                when a notification system is added.
+            </p>
+        </div>
+    </section>
+</section>
+
+<!-- SETTINGS -->
+<section class="app-screen" id="settingsScreen">
+    <section class="wallet-card">
+        <p class="eyebrow">PREFERENCES</p>
+        <h2>Settings</h2>
+
+        <div class="settings-row">
+            <div>
+                <strong>Application</strong>
+                <p>PoolPlay prototype</p>
+            </div>
+            <span class="demo-badge">DEMO</span>
+        </div>
+
+        <div class="settings-row">
+            <div>
+                <strong>Data storage</strong>
+                <p>Saved locally in this browser</p>
+            </div>
+        </div>
+
+        <div class="settings-row">
+            <div>
+                <strong>Real-money services</strong>
+                <p>Not connected</p>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="pool-button"
+            id="settingsResetBtn"
+        >Reset demonstration data</button>
+    </section>
+</section>
+
+</main><div id="toast" class="toast" role="status" aria-live="polite"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="app.js"></script></body>
+</html>
