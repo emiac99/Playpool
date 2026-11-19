@@ -16,7 +16,6 @@ const STORAGE_KEY = "poolPlayDemoState_v1";
 let state = null;
 let toastTimer = null;
 let sharedPoolChannel = null;
-let poolPlayAuthClient = null;
 
 /* ========================================
    DATE AND DEFAULT DATA
